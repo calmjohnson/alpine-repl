@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="static/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="dist/app.css" />
+    <meta name="description" content="Alpine JS REPL" />
+    <title>ALpine JS - REPL</title>
+  </head>
+  <body class="bg-body font-Roboto">
+    <main class="flex h-screen flex-col justify-between">
+      <!--BEGIN: Header-->
+      <header
+        class="flex items-center justify-between bg-slate-900 py-3 px-5 font-bold text-white"
+      >
+        <!--Alpine Doc-->
+        <a
+          href="https://alpinejs.dev"
+          target="_blank"
+          class="flex items-center space-x-2"
+        >
+          <img
+            src="static/favicon.png"
+            class="rounded-md bg-slate-400 p-1 shadow-md shadow-sky-900"
+            alt="Alpine Icon"
+          />
+          <span>Read Alpine Doc</span>
+        </a>
+        <!--Alpine Doc-->
+        <!--Links-->
+        <div class="flex items-center space-x-5">
+          <a
+            href="https://alpineapple.dev"
+            class="underline underline-offset-4"
+            target="_blank"
+            >Alpine Components</a
+          >
+          <a
+            href="https://github.com/calmjohnson/alpine-repl"
+            target="_blank"
+            class="rounded-full border border-white p-1"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-white"
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M0 0h24v24H0z" stroke="none" />
+              <path
+                d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"
+              />
+            </svg>
+          </a>
+        </div>
+        <!--Links-->
+      </header>
+      <!--END: Header-->
+      <!--BEGIN: Editor-->
+      <section class="mb-auto h-full w-full bg-black bg-opacity-75 text-white">
+        <!--Grid-->
+        <div class="grid h-full w-full grid-cols-2 gap-5 p-5">
+          <!--Editor-->
+          <div class="h-full w-full rounded-lg bg-sky-50 shadow shadow-sky-400">
+            <Repl bind:this="{repl}" showAst />
+          </div>
+          <!--Editor-->
+          <!--Output-->
+          <div class="h-full w-full rounded-lg bg-white">Hello World</div>
+          <!--Output-->
+        </div>
+        <!--Grid-->
+      </section>
+      <!--END: Editor-->
+    </main>
+  </body>
+</html>
