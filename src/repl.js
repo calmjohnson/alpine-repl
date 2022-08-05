@@ -6,7 +6,11 @@ import hljs from 'highlight.js';
 import {withLineNumbers} from 'codejar/linenumbers';
 
 export default () => ({
-    code: AlpineInstance.$persist(''),
+    code: `<div x-data="{ count: 0 }">
+    <button x-on:click="count++">Increment</button>
+ 
+    <span x-text="count"></span>
+</div>`,
  
     init() {  
         const highlight = editor => {

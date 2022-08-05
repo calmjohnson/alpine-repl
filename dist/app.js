@@ -3069,7 +3069,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   return {
-    code: alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].$persist(''),
+    code: "<div x-data=\"{ count: 0 }\">\n    <button x-on:click=\"count++\">Increment</button>\n \n    <span x-text=\"count\"></span>\n</div>",
     init: function init() {
       var _this = this;
 
