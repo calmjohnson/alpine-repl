@@ -1,38 +1,47 @@
-# create-svelte
+# Alpine REPL
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+An REPL for running and crafting alpine js components in the browser.
 
-## Creating a project
+## Acknowledgements
 
-If you're seeing this, you've probably already done this step. Congrats!
+- [Codejar](https://github.com/antonmedv/codejar)
+- [Tailwind CDN JIT](https://github.com/beyondcode/tailwindcss-jit-cdn)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Authors
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+- [Nonso Mbah](https://www.nonsombah.com)
 
-## Developing
+## Features
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- Live previews
+- Style with tailwind css
 
-```bash
-npm run dev
+## Run Locally
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
+Clone the project
 
 ```bash
-npm run build
+  git clone https://github.com/calmjohnson/alpine-repl
 ```
 
-You can preview the production build with `npm run preview`.
+Go to the project directory
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+```bash
+  cd alpine-repl
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev or npm run watch
+```
+
+## 🚀 About Me
+
+I'm a full stack developer looking for gigs
