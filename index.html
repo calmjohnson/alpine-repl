@@ -9,33 +9,14 @@
 
     <title>ALpine JS - REPL</title>
 
-    <!--Codemirror-->
-    <link rel="stylesheet" href="dist/codemirror/lib/codemirror.css" />
-    <script src="dist/codemirror/lib/codemirror.js"></script>
-    <script src="dist/codemirror/mode/xml/xml.js"></script>
-    <script src="dist/codemirror/mode/css/css.js"></script>
-    <script src="dist/codemirror/mode/javascript/javascript.js"></script>
-    <script src="dist/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="dist/codemirror/addon/edit/matchbrackets.js"></script>
-    <!--Codemirror-->
-
     <link rel="stylesheet" href="dist/app.css" />
-
-    <!-- Alpine Plugins -->
-    <script
-      defer
-      src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"
-    ></script>
-    <script
-      defer
-      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
+    <script src="dist/app.js" defer></script>
   </head>
   <body class="bg-body font-Roboto">
     <main class="flex h-screen flex-col justify-between">
       <!--BEGIN: Header-->
       <header
-        class="flex items-center justify-between bg-slate-900 py-3 px-5 font-bold text-white"
+        class="flex items-center justify-between bg-sky-900 py-3 px-5 font-bold text-white"
       >
         <!--Alpine Doc-->
         <a
@@ -95,13 +76,8 @@
         <!--Grid-->
         <div class="grid h-full w-full grid-cols-2 gap-0">
           <!--Editor-->
-          <div class="h-full w-full bg-sky-100 shadow shadow-sky-400">
-            <textarea
-              x-model="code"
-              name="code"
-              id="editor"
-              class="h-full"
-            ></textarea>
+          <div class="h-full w-full bg-sky-50">
+            <div class="editor language-html"></div>
           </div>
           <!--Editor-->
           <!--Output and Console-->
@@ -123,33 +99,9 @@
         <!--Grid-->
       </section>
       <!--END: Editor-->
-      <!--REPL Component-->
-      <script>
-        document.addEventListener("alpine:init", () => {
-          Alpine.data("repl", function () {
-            return {
-              code: this.$persist(""),
-
-              init() {
-                var editor = CodeMirror.fromTextArea(
-                  document.getElementById("editor"),
-                  {
-                    value: this.code,
-                    lineNumbers: false,
-                    mode: "text/html",
-                    matchBrackets: true,
-                    smartIndent: true,
-                  }
-                );
-              },
-            };
-          });
-        });
-      </script>
-      <!--REPL Component-->
       <!--BEGIN: Footer-->
       <footer
-        class="p-2 bg-slate-900 text-xs underline underline-offset-8 text-slate-50 font-bold flex justify-center"
+        class="p-2 bg-sky-900 text-xs underline underline-offset-8 text-slate-50 font-bold flex justify-center"
       >
         <a href="https://nonsombah.com" target="_blank">By | Nonso Mbah</a>
       </footer>

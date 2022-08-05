@@ -1,0 +1,38 @@
+{
+  "name": "alpine-repl",
+  "version": "1.0.0",
+  "description": "An REPL for running and crafting alpine js components in the browser ",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "mix",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calmjohnson/alpine-repl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calmjohnson/alpine-repl/issues"
+  },
+  "homepage": "https://github.com/calmjohnson/alpine-repl#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.8",
+    "laravel-mix": "^6.0.49",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.7"
+  },
+  "dependencies": {
+    "@alpinejs/persist": "^3.10.3",
+    "alpinejs": "^3.10.3",
+    "codejar": "^3.6.0",
+    "highlight.js": "^11.6.0"
+  }
+}
