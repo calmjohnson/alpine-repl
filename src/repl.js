@@ -13,7 +13,12 @@ export default () => ({
 </div>`),
 
     errors: [],
- 
+    
+    clearConsole() {
+        console.clear();
+        this.errors = [];
+    },
+
     init() {  
         window.addEventListener('error', (event) => {
             //log.textContent = `${log.textContent}${event.type}: ${event.message}\n`;
@@ -45,9 +50,16 @@ export default () => ({
         // Listen to updates
         jar.onUpdate(code => {
             this.code = code
-            var str = "<script>console.log('i am here');<\/script>";
             var newdiv = document.createElement('div');
-            newdiv.innerHTML = str;
+
+            var p = document.createElement('p');
+            p.innerHTML = "Dynamically added text";
+            newdiv.appendChild(p);
+
+            var script = document.createElement('script');
+            script.innerHTML = "console.log('i am here');";
+            newdiv.appendChild(script);
+
             document.getElementById('result').appendChild(newdiv);
         });
     }

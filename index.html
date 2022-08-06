@@ -91,10 +91,20 @@
             </div>
             <!--Output-->
             <!--Console-->
+            <!--Clear Console-->
+            <span class="mb-1 flex justify-end text-sm cursor-pointer">
+              <button
+                @click="clearConsole"
+                class="rounded-lg px-2 shadow text-xs text-white bg-sky-900"
+              >
+                Clear
+              </button>
+            </span>
+            <!--Clear Console-->
             <div
               class="h-20 overflow-y-scroll text-xs text-red-500 font-bold p-2 border-y border-slate-900 flex flex-col space-y-2"
             >
-              <template x-for="error in errors">
+              <template x-for="error in errors.reverse()">
                 <span x-text="error"></span><br />
               </template>
             </div>
