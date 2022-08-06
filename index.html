@@ -87,11 +87,17 @@
             <!--Output-->
             <div class="mb-auto">
               <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
-              <span x-html="code"></span>
+              <span x-html="code" id="result"></span>
             </div>
             <!--Output-->
             <!--Console-->
-            <div class="h-20 border-y border-slate-900"></div>
+            <div
+              class="h-20 overflow-y-scroll text-xs text-red-500 font-bold p-2 border-y border-slate-900 flex flex-col space-y-2"
+            >
+              <template x-for="error in errors">
+                <span x-text="error"></span><br />
+              </template>
+            </div>
             <!--Console-->
           </div>
           <!--Output and Console-->

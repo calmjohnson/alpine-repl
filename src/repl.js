@@ -11,8 +11,18 @@ export default () => ({
  
     <span x-text="count"></span>
 </div>`),
+
+    errors: [],
  
     init() {  
+        window.addEventListener('error', (event) => {
+            //log.textContent = `${log.textContent}${event.type}: ${event.message}\n`;
+            console.log(event)
+            this.errors.push(event.message) 
+            console.log(event.message)
+            //console.log(this.errors.message)
+        });
+
         const highlight = editor => {
             // highlight.js does not trims old tags,
             // let's do it by this hack.
@@ -35,6 +45,10 @@ export default () => ({
         // Listen to updates
         jar.onUpdate(code => {
             this.code = code
+            var str = "<script>console.log('i am here');<\/script>";
+            var newdiv = document.createElement('div');
+            newdiv.innerHTML = str;
+            document.getElementById('result').appendChild(newdiv);
         });
     }
 })
