@@ -6,7 +6,9 @@ import hljs from 'highlight.js';
 import {withLineNumbers} from 'codejar/linenumbers';
 
 export default () => ({
-    code: AlpineInstance.$persist(`<div x-data="{ count: 0 }">
+    activeEditor: AlpineInstance.$persist('html'),
+    javascript: AlpineInstance.$persist('console.log("Hello world")'),
+    html: AlpineInstance.$persist(`<div x-data="{ count: 0 }">
     <button x-on:click="count++">Increment</button>
  
     <span x-text="count"></span>
@@ -28,39 +30,53 @@ export default () => ({
             //console.log(this.errors.message)
         });
 
-        const highlight = editor => {
+        //Html Editor
+        const highlightHtml = editorHtml => {
             // highlight.js does not trims old tags,
             // let's do it by this hack.
-            editor.textContent = editor.textContent
-            hljs.highlightElement(editor)
+            editorHtml.textContent = editorHtml.textContent
+            hljs.highlightElement(editorHtml)
         }
 
-        const editor = document.querySelector(".editor")
-        editor.style.height = "550px"
-       
-
-        const jar = CodeJar(editor, withLineNumbers(highlight), {tab: "  "})
+        const editorHtml = document.querySelector(".editor-html")
+        
+        const jarHtml = CodeJar(editorHtml, withLineNumbers(highlightHtml), {tab: "  "})
 
         // Update code
-        jar.updateCode(this.code);
+        jarHtml.updateCode(this.html);
 
         // Get code
-        let code = jar.toString();
+        let codeHtml = jarHtml.toString();
 
         // Listen to updates
-        jar.onUpdate(code => {
-            this.code = code
-            var newdiv = document.createElement('div');
+        jarHtml.onUpdate(codeHtml => {
+            this.html = codeHtml
+        });
 
-            var p = document.createElement('p');
-            p.innerHTML = "Dynamically added text";
-            newdiv.appendChild(p);
+        //Javascript Editor
+        const highlightJavascript = editorJavascript => {
+            // highlight.js does not trims old tags,
+            // let's do it by this hack.
+            editorJavascript.textContent = editorJavascript.textContent
+            hljs.highlightElement(editorJavascript)
+        }
 
-            var script = document.createElement('script');
-            script.innerHTML = "console.log('i am here');";
-            newdiv.appendChild(script);
+        const editorJavascript = document.querySelector(".editor-js")
 
-            document.getElementById('result').appendChild(newdiv);
+        const jarJs = CodeJar(editorJavascript, withLineNumbers(highlightJavascript), {tab: "  "})
+
+        // Update code
+        jarJs.updateCode(this.javascript);
+
+        // Get code
+        let codeJs = jarJs.toString();
+
+        // Listen to updates
+        jarJs.onUpdate(codeJs => {
+            this.javascript = codeJs
+            let script = document.createElement('script')
+            script.innerHTML = this.javascript
+            document.getElementById('javascript').appendChild(script)
         });
     }
 })

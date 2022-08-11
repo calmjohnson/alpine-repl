@@ -3069,7 +3069,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   return {
-    code: alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].$persist("<div x-data=\"{ count: 0 }\">\n    <button x-on:click=\"count++\">Increment</button>\n \n    <span x-text=\"count\"></span>\n</div>"),
+    activeEditor: alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].$persist('html'),
+    javascript: alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].$persist('console.log("Hello world")'),
+    html: alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].$persist("<div x-data=\"{ count: 0 }\">\n    <button x-on:click=\"count++\">Increment</button>\n \n    <span x-text=\"count\"></span>\n</div>"),
     errors: [],
     clearConsole: function clearConsole() {
       console.clear();
@@ -3085,35 +3087,49 @@ __webpack_require__.r(__webpack_exports__);
         _this.errors.push(event.message);
 
         console.log(event.message); //console.log(this.errors.message)
-      });
+      }); //Html Editor
 
-      var highlight = function highlight(editor) {
+      var highlightHtml = function highlightHtml(editorHtml) {
         // highlight.js does not trims old tags,
         // let's do it by this hack.
-        editor.textContent = editor.textContent;
-        highlight_js__WEBPACK_IMPORTED_MODULE_2__["default"].highlightElement(editor);
+        editorHtml.textContent = editorHtml.textContent;
+        highlight_js__WEBPACK_IMPORTED_MODULE_2__["default"].highlightElement(editorHtml);
       };
 
-      var editor = document.querySelector(".editor");
-      editor.style.height = "550px";
-      var jar = (0,codejar__WEBPACK_IMPORTED_MODULE_1__.CodeJar)(editor, (0,codejar_linenumbers__WEBPACK_IMPORTED_MODULE_3__.withLineNumbers)(highlight), {
+      var editorHtml = document.querySelector(".editor-html");
+      var jarHtml = (0,codejar__WEBPACK_IMPORTED_MODULE_1__.CodeJar)(editorHtml, (0,codejar_linenumbers__WEBPACK_IMPORTED_MODULE_3__.withLineNumbers)(highlightHtml), {
         tab: "  "
       }); // Update code
 
-      jar.updateCode(this.code); // Get code
+      jarHtml.updateCode(this.html); // Get code
 
-      var code = jar.toString(); // Listen to updates
+      var codeHtml = jarHtml.toString(); // Listen to updates
 
-      jar.onUpdate(function (code) {
-        _this.code = code;
-        var newdiv = document.createElement('div');
-        var p = document.createElement('p');
-        p.innerHTML = "Dynamically added text";
-        newdiv.appendChild(p);
+      jarHtml.onUpdate(function (codeHtml) {
+        _this.html = codeHtml;
+      }); //Javascript Editor
+
+      var highlightJavascript = function highlightJavascript(editorJavascript) {
+        // highlight.js does not trims old tags,
+        // let's do it by this hack.
+        editorJavascript.textContent = editorJavascript.textContent;
+        highlight_js__WEBPACK_IMPORTED_MODULE_2__["default"].highlightElement(editorJavascript);
+      };
+
+      var editorJavascript = document.querySelector(".editor-js");
+      var jarJs = (0,codejar__WEBPACK_IMPORTED_MODULE_1__.CodeJar)(editorJavascript, (0,codejar_linenumbers__WEBPACK_IMPORTED_MODULE_3__.withLineNumbers)(highlightJavascript), {
+        tab: "  "
+      }); // Update code
+
+      jarJs.updateCode(this.javascript); // Get code
+
+      var codeJs = jarJs.toString(); // Listen to updates
+
+      jarJs.onUpdate(function (codeJs) {
+        _this.javascript = codeJs;
         var script = document.createElement('script');
-        script.innerHTML = "console.log('i am here');";
-        newdiv.appendChild(script);
-        document.getElementById('result').appendChild(newdiv);
+        script.innerHTML = _this.javascript;
+        document.getElementById('javascript').appendChild(script);
       });
     }
   };

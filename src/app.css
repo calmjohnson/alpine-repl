@@ -17,11 +17,21 @@
 .hljs {
     @apply bg-sky-100;
 }
-.editor {
+.editor-html {
     font-family: 'Source Code Pro', monospace;
     font-size: 14px;
     font-weight: 400;
-    height: 500px;
+    height: 510px;
+    letter-spacing: normal;
+    line-height: 20px;
+    padding: 10px;
+    tab-size: 4;
+}
+.editor-js {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    height: 510px;
     letter-spacing: normal;
     line-height: 20px;
     padding: 10px;

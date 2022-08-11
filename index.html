@@ -77,7 +77,30 @@
         <div class="grid h-full w-full grid-cols-2 gap-0">
           <!--Editor-->
           <div class="h-full w-full bg-sky-50">
-            <div class="editor language-html"></div>
+            <div class="flex items-center justify-start">
+              <button
+                @click="activeEditor = 'html'"
+                :class="activeEditor === 'html' ? 'bg-sky-100' : ''"
+                class="px-4 py-2 text-slate-600 font-medium text-sm"
+              >
+                HTML
+              </button>
+              <button
+                @click="activeEditor = 'javascript'"
+                :class="activeEditor === 'javascript' ? 'bg-sky-100' : ''"
+                class="px-4 py-2 text-slate-600 font-medium text-sm"
+              >
+                JAVASCRIPT
+              </button>
+            </div>
+            <div
+              x-show="activeEditor === 'html'"
+              class="editor-html language-html"
+            ></div>
+            <div
+              x-show="activeEditor === 'javascript'"
+              class="editor-js language-js"
+            ></div>
           </div>
           <!--Editor-->
           <!--Output and Console-->
@@ -87,7 +110,8 @@
             <!--Output-->
             <div class="mb-auto">
               <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
-              <span x-html="code" id="result"></span>
+              <div x-html="html"></div>
+              <div id="javascript"></div>
             </div>
             <!--Output-->
             <!--Console-->
